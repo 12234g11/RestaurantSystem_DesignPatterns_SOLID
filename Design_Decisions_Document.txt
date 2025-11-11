@@ -1,0 +1,66 @@
+Restaurant System (Design Patterns + SOLID Principles)
+---------------------------------------------------
+
+Objective:
+The project simulates a Restaurant Ordering and Billing System using Design Patterns and SOLID Principles.
+It allows users to browse menus, add-ons, apply discounts, and generate bills.
+
+---------------------------------------------------
+Design Decisions
+---------------------------------------------------
+
+1. Facade Pattern — Simplifying Workflow
+Class: RestaurantFacade.java
+Why: To unify menu creation, add-ons, billing, payments, discounts, and observers into one interface.
+Impact: Simplifies usage and reduces system complexity.
+
+2. Factory Method — Creating Menu Families
+Classes: MenuFactory, VegMenuFactory, NonVegMenuFactory, KidsMenuFactory
+Why: Each menu type has different items; Factory Method allows flexible creation.
+Impact: Supports Open/Closed Principle and easy menu expansion.
+
+3. Decorator Pattern — Customizable Add-ons
+Classes: ExtraCheeseDecorator, ExtraSauceDecorator, ExtraToppingsDecorator
+Why: Customers can add cheese, sauce, toppings dynamically.
+Impact: Avoids subclass explosion and allows dynamic customization.
+
+4. Strategy Pattern — Dynamic Discounts
+Classes: DiscountStrategy, PizzaDiscount, ChickenDiscount, MeatDiscount, NoDiscount
+Why: Each food category has its own discount logic.
+Impact: Flexible discount algorithms; adheres to Single Responsibility Principle.
+
+5. Builder Pattern — Bill Generation
+Classes: BillBuilder, Bill
+Why: Bill construction needs multiple steps.
+Impact: Cleaner, modular, and easy to extend bill generation.
+
+6. Observer Pattern — Order Notifications
+Classes: Order, KitchenObserver, WaiterObserver
+Why: Automatically notify kitchen and waiter when an order is placed.
+Impact: Promotes decoupled, event-driven communication.
+
+---------------------------------------------------
+SOLID Principles Applied
+---------------------------------------------------
+
+S - Single Responsibility: Each class does one task only.
+O - Open/Closed: New menus/discounts can be added without modifying existing code.
+L - Liskov Substitution: Subclasses can safely replace base classes.
+I - Interface Segregation: Menu items share only essential methods via IMenuItem.
+D - Dependency Inversion: High-level modules depend on abstractions, not concrete implementations.
+
+---------------------------------------------------
+Design Trade-offs and Alternatives
+---------------------------------------------------
+
+Factory vs Constructors: Factory chosen for scalability.
+Decorator vs Hardcoded combinations: Decorator chosen to support dynamic add-ons.
+Observer vs Direct calls: Observer chosen for modular event-driven updates.
+Builder vs Complex constructors: Builder chosen for flexible bill creation.
+
+---------------------------------------------------
+Summary
+---------------------------------------------------
+
+This system integrates multiple Design Patterns following SOLID Principles.
+The architecture ensures modularity and easy maintenance, allowing new menus, discounts, or payments to be added with minimal changes.
